@@ -162,7 +162,7 @@ const WeeklyCalendar: React.FC = () => {
             {countries
                           .filter(country => {
                             const { day, hour } = getDayAndTime(country.datestart);
-                            return day === weekDays[dayIndex].day && hour === (hourIndex + 1);
+                            return day === weekDays[dayIndex].day && hour === (hourIndex);
                           })
                           .map((country) => (
                             <div key={country.id} className="text-center text-sm text-[#1B1919]">
