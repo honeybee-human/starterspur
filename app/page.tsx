@@ -8,7 +8,7 @@ import { getCountries, createCountry } from './components/actions';
 const WeeklyCalendar: React.FC = () => {
   const [currentWeek, setCurrentWeek] = useState(dayjs().startOf("week"));
   const [showModal, setShowModal] = useState(false);
-  const [countries, setCountries] = useState<{ id: string; name: string; timestamp: string }[]>([]);
+  const [countries, setCountries] = useState<{ id: string; name: string; datestart: string }[]>([]);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -161,7 +161,7 @@ const WeeklyCalendar: React.FC = () => {
                         {weekDays[dayIndex].month}/{weekDays[dayIndex].date}/{weekDays[dayIndex].year} */}
             {countries
                           .filter(country => {
-                            const { day, hour } = getDayAndTime(country.timestamp);
+                            const { day, hour } = getDayAndTime(country.datestart);
                             return day === weekDays[dayIndex].day && hour === (hourIndex + 1);
                           })
                           .map((country) => (
